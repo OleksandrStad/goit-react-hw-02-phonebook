@@ -1,13 +1,15 @@
 import ProTypes from 'prop-types';
-import { ContactItem } from "./ContactsList.styled"
+import { DeleteBtn, ContactItem } from "./ContactsList.styled";
 
 
-export const ContactsList = ({ contacts, }) => (
+export const ContactsList = ({ contacts, onDeletContact }) => (
     <ul >
         {contacts.map(({ id, name, number }) => (
             <ContactItem key={id}>
                 <p>{name}: {number} </p>
-
+                <DeleteBtn type='button ' onClick={() => onDeletContact(id)}>
+                    Delete
+                </DeleteBtn >
             </ContactItem>
         ))}
     </ul >
@@ -15,5 +17,6 @@ export const ContactsList = ({ contacts, }) => (
 
 ContactsList.ProTypes = {
     contacts: ProTypes.arrayOf(ProTypes.object).isRequired,
+    onDeletContact: ProTypes.func.isRequired,
 };
 
