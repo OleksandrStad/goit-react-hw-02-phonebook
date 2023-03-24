@@ -12,10 +12,12 @@ export class App extends Component {
   };
 
   addContact = (contact) => {
-
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact]
-    }))
+    (this.state.contacts.map(contact =>
+      contact.name.toLocaleLowerCase())).includes(contact.name.toLocaleLowerCase()) ?
+      alert(`${contact.name} is alreade in contacts`) :
+      this.setState(({ contacts }) => ({
+        contacts: [...contacts, contact]
+      }))
   };
 
   changeFilter = e => {
