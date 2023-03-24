@@ -10,4 +10,7 @@ export const Filter = ({ value, onChange }) => (
     </FilterLabel >
 )
 
-
+Filter.ProTypes = {
+    value: ProTypes.string.isRequired,
+    onChange: ProTypes.func.isRequired,
+}
